@@ -1,0 +1,156 @@
+# @author: Ultralytics YOLO team (AGPL-3.0 License) - https://ultralytics.com/license
+# @modified: Tran Ngoc Tai <taitngch240051@gmail.com>
+
+# Configuration file for building the Auto ML documentation site using MkDocs.
+# Provides settings to control site metadata, customize the appearance using the
+# Material theme, define the navigation structure, and enable various plugins.
+
+# Site metadata
+site_name: AutoML Docs
+site_description: An AutoML framework for automating machine learning tasks including data preprocessing, model selection, training, and evaluation.
+# FIXME: site_url: https://docs.ultralytics.com
+site_author: Tran Ngoc Tai (@tranngoctai1010)
+repo_url: https://github.com/tranngoctai1010/Auto-ML
+edit_uri: https://github.com/tranngoctai1010/Auto-ML/tree/main/docs/en/
+repo_name: tranngoctai1010/auto-ml
+remote_name: https://github.com/tranngoctai1010/Auto-ML/tree/main/docs
+docs_dir: "docs/en/" # where to find the markdown files
+site_dir: "site/" # where to publish to
+use_directory_urls: true # don't display 'index.html' in slugs
+
+# Theme customization
+theme:  
+  name: material
+  language: en
+  custom_dir: docs/overrides/
+  logo: https://github.com/tranngoctai1010/auto-ml/raw/main/docs/assets/logo_and_favicon.png
+  favicon: https://github.com/tranngoctai1010/auto-ml/raw/main/docs/assets/logo_and_favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  # font:  # disabled for faster page load times
+  #  text: Helvetica
+  #  code: Roboto Mono
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to system preference
+  features:
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - toc.follow
+    - navigation.top
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.prune
+    - navigation.footer
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.indexes
+    - navigation.sections # navigation.expand or navigation.sections
+    - content.tabs.link # all code tabs change simultaneously
+    # - search.highlight
+    # - search.share
+    # - search.suggest
+
+# Customization
+copyright: © 2025 Tran Ngoc Tai. All rights reserved.
+extra: # version:
+  # FIXME: homepage: https://www.ultralytics.com/
+  #   provider: mike # version drop-down menu
+  robots: robots.txt
+  analytics:
+    provider: google
+    property: G-2M5EHKC0BH
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ultralytics
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/ng%E1%BB%8Dc-t%C3%A0i-tr%E1%BA%A7n-aa9b2a344/
+    # FIXME: - icon: fontawesome/brands/python
+    #   link: https://pypi.org/project/ultralytics/
+# https://www.facebook.com/tran.ngoc.tai.733479?locale=vi_VN
+
+extra_css:
+  - stylesheets/style.css
+
+extra_javascript:
+  # - javascript/extra.js
+  - javascript/giscus.js
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascript/tablesort.js
+
+markdown_extensions:
+  - admonition
+  - md_in_html
+  - tables
+  - attr_list
+  - def_list
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.snippets:
+      base_path: ./
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+
+
+# Primary navigation ---------------------------------------------------------------------------------------------------
+not_in_nav: |
+  /compare
+  /macros
+
+nav:
+  - Home: index.md
+  - Reference:
+    - __init__: reference/utils/__init__.md
+
+# Plugins including 301 redirects navigation ---------------------------------------------------------------------------
+plugins:
+  # - search:
+  #     lang: en
+  - mkdocstrings:
+      enabled: true
+      default_handler: python
+      handlers:
+        python:
+          options:
+            docstring_options:
+              ignore_init_summary: true
+            merge_init_into_class: true
+            docstring_style: google
+            show_root_heading: true
+            show_source: true
+            separate_signature: true
+            line_length: 80
+            show_signature_annotations: true
+            show_symbol_type_heading: true # insiders
+            show_symbol_type_toc: true # insiders
+            show_inheritance_diagram: true # insiders
