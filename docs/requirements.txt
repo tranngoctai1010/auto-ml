@@ -1,0 +1,4 @@
+mkdocs-material==9.6.18
+mkdocstrings
+mkdocs-material
+mkdocstrings-python
