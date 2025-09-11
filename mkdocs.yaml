@@ -129,8 +129,6 @@ not_in_nav: |
 
 nav:
   - Home: index.md
-  - Reference:
-    - __init__: reference/utils/__init__.md
 
 # Plugins including 301 redirects navigation ---------------------------------------------------------------------------
 plugins:
